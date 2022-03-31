@@ -3,7 +3,8 @@ const pacArray = [
   ['./PacMan1.png', './PacMan2.png'],
   ['./PacMan3.png', './PacMan4.png'],
 ];
-let direction = 0;
+
+let count = 0;
 const pacMen = []; // This array holds all the pacmen
 
 // This function returns an object with random values
@@ -19,6 +20,8 @@ function makePac() {
   // returns an object with random values scaled {x: 33, y: 21}
   let velocity = setToRandom(10); // {x:?, y:?}
   let position = setToRandom(200);
+  let focus = 0;
+  let direction = 0;
 
   // Add image to div id = game
   let game = document.getElementById('game');
@@ -26,6 +29,8 @@ function makePac() {
   newimg.style.position = 'absolute';
   newimg.src = './PacMan1.png';
   newimg.width = 100;
+  newimg.focus = focus;
+  newimg.direction = direction;
 
   // TODO: set position here
   newimg.style.position.left = position.x;
@@ -51,6 +56,14 @@ function update() {
     item.newimg.style.left = item.position.x;
     item.newimg.style.top = item.position.y;
   });
+  count++;
+  if(count == 10){
+    count = 0;
+    pacMen.forEach((item) => {
+      item.newimg.focus = (item.newimg.focus + 1) % 2;
+      item.newimg.src = pacArray[item.newimg.direction][item.newimg.focus];
+    });
+  }
   setTimeout(update, 20);
 }
 
@@ -58,12 +71,13 @@ function checkCollisions(item) {
   // TODO: detect collision with all walls and make pacman bounce
   if(item.newimg.width + item.position.x >= window.innerWidth || item.position.x < 0){
     item.velocity.x = -item.velocity.x;
+    item.newimg.direction = (item.newimg.direction + 1) % 2;
+    item.newimg.src = pacArray[item.newimg.direction][item.newimg.focus];
   }
 
   if(item.newimg.height + item.position.y >= window.innerHeight || item.position.y < 0){
     item.velocity.y = -item.velocity.y;
   }
-
 }
 
 function makeOne() {
