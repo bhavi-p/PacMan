@@ -2,12 +2,37 @@
 
 <head>
     <title>Pacmen</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
     <div id='game'>
-        <button onclick='makeOne()' width='200' height='30'>Add PacMan</button>
-        <button onclick='update()' width='200' height='30'>Start Game</button>
+        <container class="game-buttons">   
+            <button class='fill' onclick='makeOne()' width='200' height='30'>
+                Add PacMan
+            </button>
+            <button class='fill' onclick='update()' width='200' height='30'>
+                Start Game
+            </button>
+            <button type="button" class="fill" onClick="window.location.reload();">
+                Restart
+            </button>
+        </container>
+        <container class="how-to">
+            <ul>
+                <li>
+                    <b>Add PacMan: </b> </br> Generate a new PacMan from the factory
+                </li>
+            </br> 
+                <li>
+                    <b>Start Game: </b> </br> Start PacMan squad chomping around the screen
+                </li>
+            </br> 
+                <li>
+                    <b>Restart: </b> </br> Reset the factory and game
+                </li>
+            </ul>
+        </container>
     </div>
 
     <!-- DO NOT CHANGE THIS LINE OF CODE -->

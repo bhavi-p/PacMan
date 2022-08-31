@@ -19,7 +19,7 @@ function setToRandom(scale) {
 function makePac() {
   // returns an object with random values scaled {x: 33, y: 21}
   let velocity = setToRandom(10); // {x:?, y:?}
-  let position = setToRandom(200);
+  let position = setToRandom(400);
   let focus = 0;
   let direction = 0;
 
@@ -75,13 +75,18 @@ function checkCollisions(item) {
     item.newimg.src = pacArray[item.newimg.direction][item.newimg.focus];
   }
 
-  if(item.newimg.height + item.position.y >= window.innerHeight || item.position.y < 0){
+  if(item.newimg.height + item.position.y >= window.innerHeight +1 || item.position.y < 0){
     item.velocity.y = -item.velocity.y;
   }
 }
 
 function makeOne() {
   pacMen.push(makePac()); // add a new PacMan
+}
+
+function reset() {
+  location.reload();
+  return false;
 }
 
 //don't change this line
