@@ -8,7 +8,7 @@ Follow the link to this repo to check it out on Github Pages
 Clone the project and run index.html
 
 ## Roadmap of Future
-I would like to make the UI more game like and add stylized buttons and maybe more options for the user to manipulate the game
+I would like to make the UI more game like and add stylized buttons and maybe more options for the user to manipulate the game and a PacMan counter
 
 ## License
 [MIT License](/LICENSE).
